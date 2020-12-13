@@ -1,0 +1,20 @@
+service: station-finder-demo-app
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-2
+
+package:
+  exclude:
+    - node_modules/**
+
+
+plugins:
+  - serverless-finch
+
+custom:
+  client:
+    bucketName: station-finder-demo-app-ives-2020
+    distributionFolder: build
+    
