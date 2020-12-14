@@ -1,12 +1,17 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer } from "@reduxjs/toolkit";
 
-import defaultState from '../default-state';
-import { setStationCode } from '../actions';
-import {stationCodeReducer} from './stationReducers';
+import defaultState from "../default-state";
+import { setStationCode, getDeparturesData } from "../actions";
+import {
+  stationCodeReducer,
+  stationDeparturesReducerFulfilled,
+  stationDeparturesReducerRejected,
+} from "./stationReducers";
 
 const actionsMap = {
   [setStationCode]: stationCodeReducer,
-  // [getDetails]: stationDetailsReducer
+  [getDeparturesData.fulfilled]: stationDeparturesReducerFulfilled,
+  [getDeparturesData.rejected]: stationDeparturesReducerRejected,
 };
 
 export const rootReducer = createReducer(defaultState, actionsMap);

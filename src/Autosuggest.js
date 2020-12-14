@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from 'react-redux';
-import { setStationCode } from './store/actions/';
+import { useDispatch } from "react-redux";
+import { setStationCode } from "./store/actions/";
 
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-export const Autosuggest = () => {
+import { fetchData } from "./services/restAPI";
 
+export const Autosuggest = () => {
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
@@ -22,12 +23,11 @@ export const Autosuggest = () => {
     }
 
     (async () => {
-      const response = await fetch(
+      const response = await fetchData(
         "http://savills-techtest-nwapi.eba-eammdiqd.eu-west-2.elasticbeanstalk.com/stations/"
       );
-      const { data } = await response.json();
       if (active) {
-        setOptions(data);
+        setOptions(response.data);
       }
     })();
 

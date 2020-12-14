@@ -4,23 +4,18 @@ import { StyledContainer } from './HomePage.styles';
 
 import { Autosuggest } from './Autosuggest';
 import { StationSchedule } from './StationSchedule';
-
-import { Error } from "./Error";
+import { ErrorMessages } from "./ErrorMessages";
 
 const HomePage = () => {
 
-  const error = 'Example error';
+  // const error = 'Example error';
 
   return (
     <StyledContainer maxWidth="sm">
-
-      <h1>Live departures</h1>
-      
-      {error && <Error message={error} />}
-
+      <h1>Live departures</h1>    
+      <ErrorMessages />
       <Autosuggest />
       <StationSchedule />
-      
     </StyledContainer>
   );
 }
